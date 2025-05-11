@@ -60,7 +60,9 @@ This project presents a comprehensive framework for advanced power estimation in
 - Compare model predictions with ground truth and assess using metrics such as RMSE, MAE, and relative error.
 - Visualize results and analyze model performance under varying data availability and system scenarios.
 ![image](https://github.com/user-attachments/assets/c051fdaa-7ce6-4ea7-b292-beb512de8df2)
-
+![LSTM_1_TS_2_NSS_2_Ind_1Zone_PHVACPlot_withoutSim](https://github.com/user-attachments/assets/c2cc84f5-9c77-49be-be22-2a0c3600844b)
+![GRU_1_TS_2_NSS_2_Ind_1Zone_PHVACPlot_withoutSim](https://github.com/user-attachments/assets/60d9da72-50ed-4d30-b80b-762818591cde)
+MLP_L_1_TS_2_NSS_2_Ind_1Zone_PHVACPlot_withoutSim
 ## Example Use Cases
 
 - **Building Energy Management:** Predict zone temperature and power consumption using hybrid ML and PINN models.
