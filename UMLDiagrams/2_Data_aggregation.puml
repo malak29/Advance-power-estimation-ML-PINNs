@@ -1,0 +1,46 @@
+@startuml
+
+actor User
+
+participant "Python Script" as Script
+participant "OS Module" as OS
+participant "Pandas Module" as Pandas
+participant "Pickle Module" as Pickle
+
+User -> Script: Run Script
+
+activate Script
+
+Script -> Script: importModules()
+Script -> OS: Get current file path
+Script -> Script: userInputs()
+
+Script -> Script: getRequiredData()
+Script -> OS: Get Sim_ProcessedData folder path
+Script -> Pickle: Load IDF_OutputVariable_Dict
+Script -> Pickle: Load Eio_OutputFile_Dict
+
+Script -> Script: createZoneLists()
+Script -> Pandas: Create unique zone list
+Script -> Script: Calculate area/volume if required
+
+Script -> Script: createAggregationDF()
+Script -> Pandas: Initialize Aggregation_DF
+Script -> Pandas: Initialize Aggregation_DF_Equipment
+
+Script -> Script: createAggregationDict()
+Script -> Pandas: Initialize Aggregation_Dict
+
+Script -> Script: aggregateData()
+Script -> Pandas: Loop through Aggregation_Zone_List
+Script -> Pandas: Aggregate data based on variable type
+
+Script -> Script: createAggregatedDataFolder()
+Script -> OS: Check if folders exist, create if not
+
+Script -> Script: storeAggregatedData()
+Script -> Pickle: Save Aggregation_Dict as a .pickle file
+
+deactivate Script
+
+@enduml

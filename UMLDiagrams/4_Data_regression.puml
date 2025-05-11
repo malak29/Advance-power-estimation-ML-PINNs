@@ -1,0 +1,59 @@
+@startuml Data_regression
+
+actor User
+
+participant "Python Script" as Script
+participant "OS Module" as OS
+participant "Pickle Module" as Pickle
+participant "Pandas Module" as Pandas
+participant "TensorFlow Module" as TF
+participant "Matplotlib Module" as Matplotlib
+participant "Seaborn Module" as Seaborn
+
+User -> Script: Run Script
+
+activate Script
+
+Script -> Script: importModules()
+Script -> OS: Get current file path
+Script -> Script: userInputs()
+
+loop For each Aggregated Sub-Zone
+    Script -> Script: createInputFileNames()
+    Script -> Script: createResultFileNames()
+
+    Script -> Script: getRequiredData()
+    Script -> OS: Get Sim_TrainingTestingData Folder Path
+    Script -> Pickle: Load TestingData_RegressionModel_Dict
+    Script -> Pickle: Load TrainingData_RegressionModel_Dict
+
+    Script -> Script: createRegressionModelDataFolder()
+    Script -> OS: Check if folders exist, create if not
+
+    Script -> Script: regressionModelling()
+    Script -> Pandas: Initialize ANN_HeatInput_Train_DF
+    Script -> Pandas: Initialize ANN_HeatInput_Test_DF
+    Script -> Pandas: Initialize Regression_PercentageAccuracy_DF
+
+    loop For each Regression Model
+        Script -> TF: Prepare datasets and normalization layer
+        Script -> TF: Create and compile regression model
+        Script -> TF: Train model
+        Script -> TF: Predict on test and train data
+        Script -> Pandas: Store predictions for ANN input
+        Script -> Pandas: Compute percentage accuracy
+        Script -> TF: Save model
+        Script -> Seaborn: Plot pair plots
+        Script -> Matplotlib: Plot training, error, and prediction plots
+    end
+
+    Script -> Script: storeRegressionModelData()
+    Script -> Pandas: Save Regression_PercentageAccuracy_DF as CSV
+    Script -> Pickle: Save ANN_HeatInput_Train_DF
+    Script -> Pickle: Save ANN_HeatInput_Test_DF
+
+end
+
+deactivate Script
+
+@enduml

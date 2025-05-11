@@ -1,0 +1,51 @@
+@startuml Data_generation
+
+actor User
+
+participant "Python Script" as Script
+participant "OS Module" as OS
+participant "Opyplus Module" as Opyplus
+participant "Shutil Module" as Shutil
+participant "Datetime Module" as Datetime
+participant "Pandas Module" as Pandas
+participant "Pickle Module" as Pickle
+
+User -> Script: Run Script
+
+activate Script
+
+Script -> Script: importModules()
+Script -> OS: Get current file path
+Script -> Script: userInputs()
+
+Script -> Script: getIDFFile()
+Script -> OS: List files in Weather Folder
+Script -> OS: Construct paths for IDF and Weather Files
+Script -> Shutil: Copy IDF and Weather Files to Temporary Folder
+
+Script -> Script: runSimulation()
+Script -> Opyplus: Simulate initial run
+Script -> OS: Read simulation variable list
+
+Script -> Script: processData()
+Script -> Opyplus: Load IDF file
+Script -> Script: Edit IDF file (RunPeriod, TimeStep)
+Script -> Script: Update schedules
+Script -> OS: Save edited IDF file
+Script -> Shutil: Copy weather file
+
+Script -> Opyplus: Simulate edited IDF file
+Script -> OS: Move CSV files to desired folder
+Script -> Pandas: Read CSV files and concatenate data
+Script -> Datetime: Process DateTime column
+Script -> Pickle: Save output variable data
+
+Script -> OS: Read EIO output file
+Script -> Pandas: Process EIO data and create tables
+Script -> Pickle: Save EIO output data
+
+Script -> Shutil: Clean up temporary files
+
+deactivate Script
+
+@enduml

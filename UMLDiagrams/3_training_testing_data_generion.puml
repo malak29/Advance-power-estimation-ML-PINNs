@@ -1,0 +1,56 @@
+@startuml train_test_data_generation
+
+actor User
+
+participant "Python Script" as Script
+participant "OS Module" as OS
+participant "Pandas Module" as Pandas
+participant "Pickle Module" as Pickle
+participant "Datetime Module" as Datetime
+participant "Matplotlib Module" as Matplotlib
+
+User -> Script: Run Script
+
+activate Script
+
+Script -> Script: importModules()
+Script -> OS: Get current file path
+Script -> Script: userInputs()
+
+loop For each Aggregated Sub-Zone
+    Script -> Script: createResultFileNames()
+
+    Script -> Script: getRequiredData()
+    Script -> OS: Get Sim_AggregatedData_FolderPath
+    Script -> Pickle: Load Aggregated_Dict
+
+    Script -> Script: basicComputation()
+    Script -> Datetime: Correct DateTime_List for 24th Hour Error
+    Script -> Script: Compute GHI
+    Script -> Script: Correct Schedule with Equipment Level
+    Script -> Script: Compute HVAC Parameters
+
+    Script -> Matplotlib: Plot debugging figures
+
+    Script -> Script: separateTestAndTrainData()
+    Script -> Script: Create Test and Train DateRange Index
+
+    Script -> Script: createRegressionModelDict()
+    Script -> Pandas: Initialize TrainingData_RegressionModel_Dict
+    Script -> Pandas: Initialize TestingData_RegressionModel_Dict
+
+    Script -> Script: createTrainingTestingDataFolder()
+    Script -> OS: Check if folders exist, create if not
+
+    Script -> Script: storeTrainingTestingData()
+    Script -> Pickle: Save TrainingData_RegressionModel_Dict
+    Script -> Pickle: Save TestingData_RegressionModel_Dict
+
+    Script -> Script: storeAggregatedData()
+    Script -> Pickle: Save Aggregation_DF_Train
+    Script -> Pickle: Save Aggregation_DF_Test
+end
+
+deactivate Script
+
+@enduml
