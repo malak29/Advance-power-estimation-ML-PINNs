@@ -59,6 +59,7 @@ This project presents a comprehensive framework for advanced power estimation in
 
 - Compare model predictions with ground truth and assess using metrics such as RMSE, MAE, and relative error.
 - Visualize results and analyze model performance under varying data availability and system scenarios.
+![image](https://github.com/user-attachments/assets/c051fdaa-7ce6-4ea7-b292-beb512de8df2)
 
 ## Example Use Cases
 
