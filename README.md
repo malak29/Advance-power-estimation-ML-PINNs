@@ -30,8 +30,11 @@ This project presents a comprehensive framework for advanced power estimation in
 ├── requirements.txt        # Python dependencies
 └── README.md               # Project documentation
 ```
+![image](https://github.com/user-attachments/assets/8bf787b9-9d2e-40d7-857a-b4d23f84aae6)
 
 ## Methodology
+
+![image](https://github.com/user-attachments/assets/246de6f4-5200-4fbf-958d-3ca372855133)
 
 ### 1. Data Aggregation & Preprocessing
 
@@ -39,7 +42,11 @@ This project presents a comprehensive framework for advanced power estimation in
 - Engineer features such as weather, occupancy, equipment, solar gains, and HVAC operation for building systems, or voltage, current, and power flows for grid systems.
 - Split data into training and testing sets for robust model evaluation.
 
+![image](https://github.com/user-attachments/assets/d8fdb0d1-2cee-4293-b4bc-3a3b00b6dc5f)
+
 ### 2. Traditional ML Modeling
+   ![image](https://github.com/user-attachments/assets/b30d9b67-86b9-4ab7-9bbe-3053376811fe)
+   ![image](https://github.com/user-attachments/assets/b5cb0c10-f402-4d28-8754-f36c151f050e)
 
 - Apply regression models (e.g., linear regression, random forest) and time series methods (e.g., LSTM) to establish performance baselines for power and temperature estimation[3].
 
