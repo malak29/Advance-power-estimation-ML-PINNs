@@ -12,24 +12,6 @@ This project presents a comprehensive framework for advanced power estimation in
 - **Data Aggregation and Preprocessing:** Automated pipeline for simulation data aggregation, feature engineering, and train/test split.
 - **Modular Codebase:** Easily extensible for different power system scenarios, including building energy management, grid state estimation, and converter parameter identification[5][6].
 
-## Project Structure
-
-```
-.
-├── data/
-│   ├── raw/                # Raw simulation or measurement data
-│   ├── processed/          # Aggregated and preprocessed datasets
-├── notebooks/              # Jupyter notebooks for exploration and visualization
-├── src/
-│   ├── data_aggregation.py # Data aggregation scripts
-│   ├── regression.py       # Traditional ML model scripts
-│   ├── pinn.py             # Physics-Informed Neural Network implementation
-│   ├── utils.py            # Utility functions
-├── models/                 # Saved model weights and checkpoints
-├── results/                # Plots, metrics, and output files
-├── requirements.txt        # Python dependencies
-└── README.md               # Project documentation
-```
 ![image](https://github.com/user-attachments/assets/8bf787b9-9d2e-40d7-857a-b4d23f84aae6)
 
 ## Methodology
