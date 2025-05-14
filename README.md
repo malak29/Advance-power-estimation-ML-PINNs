@@ -114,6 +114,3 @@ Citations:
 [18] https://github.com/tsotchke/PINN
 [19] https://github.com/CompPhysics/AdvancedMachineLearning
 [20] https://github.com/qiaosun22/AwesomePhysicsInformedLLMs
-
----
-Answer from Perplexity: pplx.ai/share
